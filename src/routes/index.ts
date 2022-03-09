@@ -6,8 +6,8 @@ const routes: Array<RouteRecordRaw> = [
   path: '/',
   name: 'Index',
   component: import('@/views/Index.vue'),
+  children: [...GameList],
  },
- ...GameList,
 ];
 
 const router = createRouter({
