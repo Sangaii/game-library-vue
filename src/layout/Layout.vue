@@ -6,7 +6,7 @@
         <a-breadcrumb-item>Home</a-breadcrumb-item>
         <a-breadcrumb-item>List</a-breadcrumb-item>
       </a-breadcrumb>
-      <div :style="{ background: '#fff', padding: '24px', minHeight: '280px',height:'calc(100vh - 190px)' }">
+      <div :style="{ background: '#fff', padding: '24px', minHeight: '280px',minHeight:'calc(100vh - 190px)' }">
         <router-view></router-view>
       </div>
     </a-layout-content>
