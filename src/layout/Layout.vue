@@ -2,10 +2,20 @@
   <a-layout class="layout">
     <Header></Header>
     <a-layout-content style="padding: 0 50px">
-      <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-      </a-breadcrumb>
+      <div class="breadcrumb">
+        <BreadCrumb :routes="acctRoutes" />
+        <!-- <a-breadcrumb :routes="acctRoutes">
+          <template #itemRender="{ route, paths }">
+            <span v-if="routes.indexOf(route) === routes.length - 1">
+              {{ route.meta.title }}
+            </span>
+            <router-link v-else
+                         :to="`${paths.join('/')}`">
+              {{ route.meta.title }}
+            </router-link>
+          </template>
+        </a-breadcrumb> -->
+      </div>
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px',minHeight:'calc(100vh - 190px)' }">
         <router-view></router-view>
       </div>
@@ -17,8 +27,21 @@
 </template>
 <script lang="ts" setup>
 import Header from "./Header.vue";
+import BreadCrumb from "@/components/BreadCrumb/BreadCrumb.vue";
+import { routes } from "@/routes/index.ts";
+import { useRoute, useRouter } from "vue-router";
+const route = useRoute();
+const router = useRouter();
+const basePath = "/";
+let acctRoutes: any;
+if (routes[0].name === "Shop") {
+  acctRoutes = routes[0].children;
+}
 </script>
 <style>
+.breadcrumb {
+  margin: 8px 0;
+}
 .site-layout-content {
   min-height: 280px;
   padding: 24px;

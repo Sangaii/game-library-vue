@@ -3,21 +3,24 @@
     <div class="listHeader"></div>
     <div class="listContent">
       <div class="mainList">
-        <div v-for="(item,index) in listLength"
+        <div v-for="(item,index) in list"
              class="listItemWrap"
+             @click="toDetail(item.id)"
              :key="index">
-          <div v-show="list[index]"
-               class="listItem">
+          <div class="listItem">
             <div class="listItemImg">
-              <img :src="list[index]?list[index].src:''"
+              <img :src="item.src"
                    alt="">
             </div>
             <div class="listItemTxt">
-              <div class="listItemTitle">{{list[index]?list[index].title:''}}</div>
-              <div class="listItemDesp">{{list[index]?list[index].desp:''}}</div>
+              <div class="listItemTitle">{{item.title}}</div>
+              <div class="listItemDesp">{{item.desp}}</div>
             </div>
           </div>
         </div>
+        <div v-for="(item,index) in listLength"
+             class="listItemWrap"
+             :key="index"></div>
       </div>
       <div class="listPage"></div>
     </div>
@@ -26,40 +29,52 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute, useRouter } from "vue-router";
 const list = [
   {
+    id: 1,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
   {
+    id: 2,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
   {
+    id: 3,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
   {
+    id: 4,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
   {
+    id: 5,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
   {
+    id: 6,
     title: "测试游戏",
     src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
     desp: "测试描述",
   },
 ];
+const router = useRouter();
+const listLength = 4 - (list.length % 4);
 
-const listLength = list.length + (list.length % 4);
+console.log(123456);
+const toDetail = (id: any) => {
+  router.push("/list/" + id);
+};
 </script>
 
 

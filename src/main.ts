@@ -4,6 +4,13 @@ import router from './routes/index';
 //引入antDesign
 import 'ant-design-vue/dist/antd.css';
 import { appendFile } from 'fs';
+router.beforeEach((to, from, next) => {
+ console.log(to);
+ if (typeof to.meta.title === 'string') {
+  document.title = to.meta.title;
+ }
+ next();
+});
 
 import './assets/style/global.less';
 const app = createApp(App);

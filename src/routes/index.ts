@@ -1,12 +1,25 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import GameList from './GameList/GameList';
+import Artical from './Artical/Artical';
+const shop: string = '/shop';
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
  {
   path: '/',
-  name: 'Index',
-  component: import('@/views/Index.vue'),
-  children: [...GameList],
+  name: 'Shop',
+  component: () => import('@/layout/Layout.vue'),
+  redirect: shop + '/index',
+  children: [
+   {
+    path: shop + '/index',
+    name: 'Index',
+    component: () => import('@/views/Index.vue'),
+    meta: {
+     title: '首页',
+    },
+    children: [...GameList, ...Artical],
+   },
+  ],
  },
 ];
 
