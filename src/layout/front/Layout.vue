@@ -1,20 +1,9 @@
 <template>
   <a-layout class="layout">
     <Header></Header>
-    <a-layout-content style="padding: 0 50px">
+    <a-layout-content style="padding: 0 100px">
       <div class="breadcrumb">
         <BreadCrumb :routes="acctRoutes" />
-        <!-- <a-breadcrumb :routes="acctRoutes">
-          <template #itemRender="{ route, paths }">
-            <span v-if="routes.indexOf(route) === routes.length - 1">
-              {{ route.meta.title }}
-            </span>
-            <router-link v-else
-                         :to="`${paths.join('/')}`">
-              {{ route.meta.title }}
-            </router-link>
-          </template>
-        </a-breadcrumb> -->
       </div>
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px',minHeight:'calc(100vh - 190px)' }">
         <router-view></router-view>
@@ -26,9 +15,9 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
-import Header from "./Header.vue";
+import Header from "../Header.vue";
 import BreadCrumb from "@/components/BreadCrumb/BreadCrumb.vue";
-import { routes } from "@/routes/index.ts";
+import { routes } from "@/routes/index";
 import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();

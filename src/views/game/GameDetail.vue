@@ -36,6 +36,7 @@ const game = {
   imageList: [img1, img2, img3, img4, img5],
   name: "测试标题",
 };
+console.log("detail");
 let centerImg = ref(game.imageList[0]);
 
 const setCenterImg = (index: any) => {

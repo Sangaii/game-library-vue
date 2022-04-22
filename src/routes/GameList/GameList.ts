@@ -3,19 +3,17 @@ export default [
  {
   path: shop + '/list',
   name: 'GameList',
-  component: () => import('@/views/List.vue'),
+  component: () => import('@/views/game/List.vue'),
   meta: {
    title: '游戏列表',
   },
-  children: [
-   {
-    path: shop + '/detail/:id',
-    name: 'GameDetail',
-    component: import('@/views/GameDetail.vue'),
-    meta: {
-     title: '游戏详情',
-    },
-   },
-  ],
+ },
+ {
+  path: shop + '/detail',
+  name: 'GameDetail',
+  component: () => import('@/views/game/GameDetail.vue'),
+  meta: {
+   title: '游戏详情',
+  },
  },
 ];

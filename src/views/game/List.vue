@@ -9,11 +9,11 @@
              :key="index">
           <div class="listItem">
             <div class="listItemImg">
-              <img :src="item.src"
+              <img :img="item.img"
                    alt="">
             </div>
             <div class="listItemTxt">
-              <div class="listItemTitle">{{item.title}}</div>
+              <div class="listItemTitle">{{item.name}}</div>
               <div class="listItemDesp">{{item.desp}}</div>
             </div>
           </div>
@@ -24,56 +24,31 @@
       </div>
       <div class="listPage"></div>
     </div>
-    <div class="listBottom"></div>
+    <div class="listBottom">
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
-const list = [
-  {
-    id: 1,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-  {
-    id: 2,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-  {
-    id: 3,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-  {
-    id: 4,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-  {
-    id: 5,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-  {
-    id: 6,
-    title: "测试游戏",
-    src: "https://lmg.jj20.com/up/allimg/tp01/1ZZQ20QJS6-0-lp.jpg",
-    desp: "测试描述",
-  },
-];
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { games } from "@/api/Games/index";
+let list = ref([] as any);
+games()
+  .then((res) => {
+    console.log("res", res);
+    if (res.status === "0") {
+      list.value = res.data;
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 const router = useRouter();
-const listLength = 4 - (list.length % 4);
+const listLength = 4 - (list.value.length % 4);
 
-console.log(123456);
 const toDetail = (id: any) => {
-  router.push("/list/" + id);
+  router.push("/shop/detail");
 };
 </script>
 

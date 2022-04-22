@@ -17,7 +17,8 @@ export default defineConfig({
    },
   },
  },
- base: process.env.VITE_BASE_URL,
+ base: process.env.BASE_URL,
+ //  ts2307解决
  plugins: [
   vue(),
   Components({
@@ -26,7 +27,7 @@ export default defineConfig({
  ],
  define: {
   'process.env': {
-   BASE_API: 'http://localhost:8021/api',
+   BASE_API: 'http://localhost:3003',
    BASE_URL: '/',
   },
  },

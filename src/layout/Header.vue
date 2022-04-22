@@ -6,7 +6,7 @@
             mode="horizontal"
             @select="select"
             :style="{ lineHeight: '64px' }">
-      <div v-for="item in headerMenu"
+      <div v-for="item in homeHeaderMenu"
            :key="item.value">
         <a-menu-item :key="item.path">{{item.name}}</a-menu-item>
       </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { headerMenu } from "@/assets/js/menu.js";
+import { homeHeaderMenu } from "@/assets/js/menu.js";
 import { onMounted, onUpdated } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
 const route = useRoute();

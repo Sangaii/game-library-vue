@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './routes/index';
 //引入antDesign
 import 'ant-design-vue/dist/antd.css';
-import { appendFile } from 'fs';
 router.beforeEach((to, from, next) => {
  console.log(to);
  if (typeof to.meta.title === 'string') {
